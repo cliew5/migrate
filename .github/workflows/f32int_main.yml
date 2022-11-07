@@ -54,6 +54,7 @@ jobs:
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
+          echo $GITHUB_ENV
           exit 1
 
   # This workflow contains a single job called "build"
