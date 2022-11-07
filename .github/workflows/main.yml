@@ -189,7 +189,7 @@ jobs:
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
-		  
+
   # This workflow contains a single job called "build"
   f32int_log:
     # The type of runner that the job will run on
@@ -203,7 +203,7 @@ jobs:
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
-		  
+
   # This workflow contains a single job called "build"
   f32int_notify:
     # The type of runner that the job will run on
