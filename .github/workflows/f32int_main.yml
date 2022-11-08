@@ -49,6 +49,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        with:
+          repository: cliew5/testtest
+          token: ${{ secrets.token }}
+
       - name: Create artifact file
         run: |
           echo $GITHUB_ENV
