@@ -118,8 +118,8 @@ jobs:
           ls Scripts
 
       # Run contain
-      -name: Run contain
-       run: |
+      - name: Run contain
+        run: |
          echo "Begin contain"
 
       # Upload artifacts
@@ -146,9 +146,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run contain
-      -name: Run contain
-       run: |
-         echo "Begin contain"
+      - name: Run contain
+        run: |
+          echo "Begin contain"
 
       # Upload artifacts
       - name: Upload artifacts result
@@ -174,9 +174,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run deploy
-      -name: Run deploy
-       run: |
-         echo "Begin deploy"
+      - name: Run deploy
+        run: |
+          echo "Begin deploy"
 
       # Upload artifacts
       - name: Upload artifacts result
@@ -202,9 +202,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run deploy
-      -name: Run deploy
-       run: |
-         echo "Begin deploy"
+      - name: Run deploy
+        run: |
+          echo "Begin deploy"
 
       # Upload artifacts
       - name: Upload artifacts result
@@ -230,9 +230,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run post-validate - health-check
-      -name: Run post-validate - health-check
-       run: |
-         echo "Begin post-validate - health-check"
+      - name: Run post-validate - health-check
+        run: |
+          echo "Begin post-validate - health-check"
 
       # Upload artifacts
       - name: Upload artifacts result
@@ -258,9 +258,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run post-validate - health-check
-      -name: Run post-validate - health-check
-       run: |
-         echo "Begin post-validate - health-check"
+      - name: Run post-validate - health-check
+        run: |
+          echo "Begin post-validate - health-check"
 
       # Upload artifacts
       - name: Upload artifacts result
@@ -286,9 +286,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run rollback
-      -name: Run rollback
-       run: |
-         echo "Begin rollback"
+      - name: Run rollback
+        run: |
+          echo "Begin rollback"
 
   f32int_n2_rb:
     # The type of runner that the job will run on
@@ -307,9 +307,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run rollback
-      -name: Run rollback
-       run: |
-         echo "Begin rollback"
+      - name: Run rollback
+        run: |
+          echo "Begin rollback"
 
   f32int_n1_uncontain:
     # The type of runner that the job will run on
@@ -328,9 +328,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run uncontain
-      -name: Run uncontain
-       run: |
-         echo "Begin uncontain"
+      - name: Run uncontain
+        run: |
+          echo "Begin uncontain"
 
   f32int_n2_uncontain:
     # The type of runner that the job will run on
@@ -349,9 +349,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run uncontain
-      -name: Run uncontain
-       run: |
-         echo "Begin uncontain"
+      - name: Run uncontain
+        run: |
+          echo "Begin uncontain"
 
   f32int_log:
     # The type of runner that the job will run on
@@ -370,9 +370,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run log-result
-      -name: Run log-result
-       run: |
-         echo "Begin log-result"
+      - name: Run log-result
+        run: |
+          echo "Begin log-result"
 
   f32int_notify:
     # The type of runner that the job will run on
@@ -391,6 +391,6 @@ jobs:
           echo $GITHUB_ENV
 
       # Run notify
-      -name: Run log-result
-       run: |
-         echo "Begin notify"
+      - name: Run log-result
+        run: |
+          echo "Begin notify"
