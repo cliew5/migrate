@@ -59,6 +59,7 @@ jobs:
       - name: Upload artifact result
         uses: actions/upload-artifact@v3
         with:
+          name: Scripts/backupDirName.txt
           path: Scripts/backupDirName.txt
 
   # This workflow contains a single job called "build"
@@ -72,6 +73,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Download
+        uses: actions/download-artifact@v3
+        with:
+          name: Scripts/backupDirName.txt
+          path: Scripts/backupDirName.txt
 
       - name: List files
         run: |
