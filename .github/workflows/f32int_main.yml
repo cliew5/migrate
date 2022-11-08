@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_preval
     environment:
-      name: manual_approve
+      name: approve_stage
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_stage
     environment:
-      name: manual_approve
+      name: approve_preprb
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -98,7 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_preprb
     environment:
-      name: manual_approve
+      name: approve_n1-contain
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -134,7 +134,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_preprb
     environment:
-      name: manual_approve
+      name: approve_n2-contain
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -162,7 +162,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n1_contain
     environment:
-      name: manual_approve
+      name: approve_n1-deploy
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -190,7 +190,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n2_contain
     environment:
-      name: manual_approve
+      name: approve_n2-deploy
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -218,7 +218,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n1_deploy
     environment:
-      name: manual_approve
+      name: approve_n1-postval
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -246,7 +246,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n2_deploy
     environment:
-      name: manual_approve
+      name: approve_n2-postval
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -274,7 +274,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n1_deploy
     environment:
-      name: manual_approve
+      name: approve_n1-rb
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -295,7 +295,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n2_deploy
     environment:
-      name: manual_approve
+      name: approve_n2-rb
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -316,7 +316,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n1_contain
     environment:
-      name: manual_approve
+      name: approve_n1-uncontain
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -337,7 +337,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_n2_contain
     environment:
-      name: manual_approve
+      name: approve_n2-uncontain
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
