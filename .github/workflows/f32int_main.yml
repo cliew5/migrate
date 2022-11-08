@@ -78,8 +78,7 @@ jobs:
         run: |
           echo $GITHUB_ENV
           echo $GITHUB_ENV
-          mkdir Scripts
-          touch Scripts/backupDirName.txt
+          echo "WOW" >> Scripts/backupDirName.txt
 
       # Run backup
       - name: Run backup
