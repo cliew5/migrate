@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+# This is a Redwing UI CICD workflow
 name: F32INT - Redwing UI CICD
 
 # Controls when the workflow will run
@@ -8,18 +8,28 @@ on:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # This workflow contain jobs - <site>_preval,<site>_stage,<site>_preprb,<site>_<node>_contain,<site>_<node>_deploy,<site>_<node>_postval,<site>_<node>_rb,<site>_<node>_uncontain,<site>_log,<site>_notify
   f32int_preval:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
 
-  # This workflow contains a single job called "build"
+      # Checks-out another repository
+      - name: Check out Scripts repo
+        uses: actions/checkout@master
+        with:
+          repository: cliew5/testtest
+          token: ${{ secrets.token }}
+
+      # Run pre-validate
+      -name: Run pre-validate
+       run: |
+         echo "Begin pre-validate"
+
   f32int_stage:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -36,7 +46,11 @@ jobs:
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run pre-validate
+      -name: Run stage-file
+       run: |
+         echo "Begin stage-file"
+
   f32int_preprb:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -49,7 +63,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Check out my other private repo
+      - name: Check out Scripts repo
         uses: actions/checkout@master
         with:
           repository: cliew5/testtest
@@ -67,13 +81,18 @@ jobs:
           mkdir Scripts
           touch Scripts/backupDirName.txt
 
-      - name: Upload artifact result
+      # Run backup
+      -name: Run backup
+       run: |
+         echo "Begin backup"
+
+      # Upload artifacts
+      - name: Upload artifacts result
         uses: actions/upload-artifact@v3
         with:
           name: Scripts_backupDirName.txt
           path: Scripts/backupDirName.txt
 
-  # This workflow contains a single job called "build"
   f32int_n1_contain:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -82,6 +101,7 @@ jobs:
       name: manual_approve
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -97,7 +117,18 @@ jobs:
           ls -lrt
           ls Scripts
 
-  # This workflow contains a single job called "build"
+      # Run contain
+      -name: Run contain
+       run: |
+         echo "Begin contain"
+
+      # Upload artifacts
+      - name: Upload artifacts result
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scripts_backupDirName.txt
+          path: Scripts/backupDirName.txt
+
   f32int_n2_contain:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -107,13 +138,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run contain
+      -name: Run contain
+       run: |
+         echo "Begin contain"
+
+      # Upload artifacts
+      - name: Upload artifacts result
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scripts_backupDirName.txt
+          path: Scripts/backupDirName.txt
+
   f32int_n1_deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -123,13 +166,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run deploy
+      -name: Run deploy
+       run: |
+         echo "Begin deploy"
+
+      # Upload artifacts
+      - name: Upload artifacts result
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scripts_backupDirName.txt
+          path: Scripts/backupDirName.txt
+
   f32int_n2_deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -139,13 +194,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run deploy
+      -name: Run deploy
+       run: |
+         echo "Begin deploy"
+
+      # Upload artifacts
+      - name: Upload artifacts result
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scripts_backupDirName.txt
+          path: Scripts/backupDirName.txt
+
   f32int_n1_postval:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -155,13 +222,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run post-validate - health-check
+      -name: Run post-validate - health-check
+       run: |
+         echo "Begin post-validate - health-check"
+
+      # Upload artifacts
+      - name: Upload artifacts result
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scripts_backupDirName.txt
+          path: Scripts/backupDirName.txt
+
   f32int_n2_postval:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -171,13 +250,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run post-validate - health-check
+      -name: Run post-validate - health-check
+       run: |
+         echo "Begin post-validate - health-check"
+
+      # Upload artifacts
+      - name: Upload artifacts result
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scripts_backupDirName.txt
+          path: Scripts/backupDirName.txt
+
   f32int_n1_rb:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -187,13 +278,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run rollback
+      -name: Run rollback
+       run: |
+         echo "Begin rollback"
+
   f32int_n2_rb:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -203,13 +299,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run rollback
+      -name: Run rollback
+       run: |
+         echo "Begin rollback"
+
   f32int_n1_uncontain:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -219,13 +320,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run uncontain
+      -name: Run uncontain
+       run: |
+         echo "Begin uncontain"
+
   f32int_n2_uncontain:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -235,13 +341,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run uncontain
+      -name: Run uncontain
+       run: |
+         echo "Begin uncontain"
+
   f32int_log:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -251,13 +362,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
 
-  # This workflow contains a single job called "build"
+      # Run log-result
+      -name: Run log-result
+       run: |
+         echo "Begin log-result"
+
   f32int_notify:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -267,8 +383,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Inject Version Details to the Application
         run: |
           echo $GITHUB_ENV
+
+      # Run notify
+      -name: Run log-result
+       run: |
+         echo "Begin notify"
