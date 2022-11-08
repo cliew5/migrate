@@ -84,6 +84,7 @@ jobs:
         run: |
           ls
           ls -lrt
+          ls Scripts
 
   # This workflow contains a single job called "build"
   f32int_n2_contain:
