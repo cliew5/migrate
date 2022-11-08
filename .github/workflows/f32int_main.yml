@@ -16,9 +16,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
       - name: Inject Version Details to the Application
+      - uses: actions/checkout@v3
         run: |
           echo $GITHUB_ENV
 
@@ -29,13 +28,11 @@ jobs:
     needs: f32int_preval
     environment:
       name: manual_approve
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
       - name: Inject Version Details to the Application
+      - uses: actions/checkout@v3
         run: |
           echo $GITHUB_ENV
 
@@ -49,13 +46,19 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
       - name: Inject Version Details to the Application
+        uses: actions/checkout@v3
         run: |
           echo $GITHUB_ENV
           echo $GITHUB_ENV
-          exit 1
+          mkdir Scripts
+          touch Scripts/backupDirName.txt
+
+      - name: Upload artifact result
+        uses: actions/upload-artifact@v3
+        with:
+          name: backupDirName
+          path: Scripts/backupDirName.txt
 
   # This workflow contains a single job called "build"
   f32int_n1_contain:
