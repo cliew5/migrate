@@ -26,9 +26,9 @@ jobs:
           token: ${{ secrets.token }}
 
       # Run pre-validate
-      -name: Run pre-validate
-       run: |
-         echo "Begin pre-validate"
+      - name: Run pre-validate
+        run: |
+          echo "Begin pre-validate"
 
   f32int_stage:
     # The type of runner that the job will run on
@@ -47,9 +47,9 @@ jobs:
           echo $GITHUB_ENV
 
       # Run pre-validate
-      -name: Run stage-file
-       run: |
-         echo "Begin stage-file"
+      - name: Run stage-file
+        run: |
+          echo "Begin stage-file"
 
   f32int_preprb:
     # The type of runner that the job will run on
@@ -82,9 +82,9 @@ jobs:
           touch Scripts/backupDirName.txt
 
       # Run backup
-      -name: Run backup
-       run: |
-         echo "Begin backup"
+      - name: Run backup
+        run: |
+          echo "Begin backup"
 
       # Upload artifacts
       - name: Upload artifacts result
