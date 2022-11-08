@@ -16,10 +16,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Inject Version Details to the Application
+      - name: Checkout
         uses: actions/checkout@v3
-        run: |
-          echo $GITHUB_ENV
 
   # This workflow contains a single job called "build"
   f32int_stage:
@@ -31,8 +29,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Inject Version Details to the Application
+      - name: Checkout
         uses: actions/checkout@v3
+
+      - name: List files
         run: |
           echo $GITHUB_ENV
 
@@ -46,8 +46,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Inject Version Details to the Application
+      - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Create artifact file
         run: |
           echo $GITHUB_ENV
           echo $GITHUB_ENV
