@@ -40,6 +40,8 @@ jobs:
     needs: f32int_preval
     environment:
       name: approve_stage
+    env:
+      LOCAL_EE: 'localee'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -49,7 +51,7 @@ jobs:
       - name: List files
         run: |
           echo $GITHUB_ENV
-
+          echo $LOCAL_EE
       # Run pre-validate
       - name: Run stage-file
         run: |
