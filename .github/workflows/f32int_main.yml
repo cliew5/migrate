@@ -358,7 +358,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_preval
     environment:
-      name: manual_approve
+      name: approve_log-notify
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -379,7 +379,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: f32int_preval
     environment:
-      name: manual_approve
+      name: approve_log-notify
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
