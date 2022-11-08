@@ -55,6 +55,11 @@ jobs:
           repository: cliew5/testtest
           token: ${{ secrets.token }}
 
+      - name: List file
+        run: |
+          ls
+          ls -lrt
+
       - name: Create artifact file
         run: |
           echo $GITHUB_ENV
