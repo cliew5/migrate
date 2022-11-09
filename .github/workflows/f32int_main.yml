@@ -1,5 +1,5 @@
 # This is a Redwing UI CICD workflow
-name: F32INT - Redwing UI CICD
+name: Test template CICD
 
 # Controls when the workflow will run
 on:
